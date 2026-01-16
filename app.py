@@ -18,7 +18,7 @@ st.title("Car Dekho")
 st.subheader("Enter Car Details")
 
 # ---------------- NUMERICAL INPUTS ----------------
-selling_price = st.number_input("Selling Price (₹)", min_value=0.0)
+
 km_driven = st.number_input("Kilometers Driven", min_value=0)
 seats = st.number_input("Seats", min_value=2, max_value=10)
 yeard_old = st.number_input("Car Age (Years)", min_value=0)
@@ -96,9 +96,10 @@ owner_encoded = owner_mapping[owner]
 # ---------------- PREDICTION ----------------
 if st.button("Predict Price"):
     prediction = model.predict(
-        [[selling_price, km_driven, owner_encoded, seats, yeard_old,
-          mileage_value, engine_value, max_power_value,
-          fuel_encoded, seller_type_encoded, transmission_encoded]]
-    )
+    [[km_driven, owner_encoded, seats, yeard_old,
+      mileage_value, engine_value, max_power_value,
+      fuel_encoded, seller_type_encoded, transmission_encoded]]
+)
+
 
     st.success(f"💰 Predicted Car Price: ₹{prediction[0]:,.2f}")
